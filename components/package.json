@@ -1,0 +1,11 @@
+{
+  "name": "nova-crm",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@google/genai": "^1.37.0",
+    "@supabase/supabase-js": "^2.39.7",
+    "recharts": "^2.12.0"
+  }
+}
