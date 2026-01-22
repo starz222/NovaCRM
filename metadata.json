@@ -1,0 +1,7 @@
+{
+  "name": "NovaCRM - Intelligent Relationship Management",
+  "description": "A modern, AI-powered CRM designed for small to medium businesses, featuring pipeline tracking, contact management, and intelligent lead insights powered by Gemini.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
