@@ -8,7 +8,15 @@ export default defineConfig({
     'process.env.SUPABASE_URL': JSON.stringify(process.env.SUPABASE_URL),
     'process.env.SUPABASE_ANON_KEY': JSON.stringify(process.env.SUPABASE_ANON_KEY),
   },
+  resolve: {
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
+  },
   build: {
-    outDir: 'dist'
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: './index.html'
+      }
+    }
   }
 });

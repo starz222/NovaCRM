@@ -1,14 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
-import { CRMData, DealStage, Contact, Deal, Task, Action } from './types';
-import { Icons } from './constants';
-import Dashboard from './components/Dashboard';
-import Contacts from './components/Contacts';
-import Pipeline from './components/Pipeline';
-import CalendarView from './components/CalendarView';
-import TasksView from './components/TasksView';
-import DataCenter from './components/DataCenter';
-import { supabase } from './services/supabase';
+import { CRMData, DealStage, Contact, Deal, Task, Action } from './types.ts';
+import { Icons } from './constants.tsx';
+import Dashboard from './components/Dashboard.tsx';
+import Contacts from './components/Contacts.tsx';
+import Pipeline from './components/Pipeline.tsx';
+import CalendarView from './components/CalendarView.tsx';
+import TasksView from './components/TasksView.tsx';
+import DataCenter from './components/DataCenter.tsx';
+import { supabase } from './services/supabase.ts';
 
 const INITIAL_DATA: CRMData = {
   contacts: [
@@ -66,7 +65,6 @@ const App: React.FC = () => {
     return INITIAL_DATA;
   });
 
-  // Load cloud data and MERGE with local data instead of overwriting
   useEffect(() => {
     async function loadAndMergeCloudData() {
       if (!supabase) return;
@@ -78,7 +76,6 @@ const App: React.FC = () => {
 
         if (cloudContacts) {
           setData(prev => {
-            // Smart Merge: Keep local contacts if they don't exist in the cloud yet
             const mergedContacts = [...(cloudContacts as Contact[])];
             prev.contacts.forEach(lc => {
               if (!mergedContacts.find(cc => cc.id === lc.id)) {
@@ -133,7 +130,6 @@ const App: React.FC = () => {
       });
     }
 
-    // Update local state immediately
     setData(prev => ({ 
       ...prev, 
       contacts: [...prev.contacts, newContact],
@@ -141,7 +137,6 @@ const App: React.FC = () => {
       tasks: updatedTasks
     }));
 
-    // Attempt cloud sync
     if (supabase) {
       setSyncStatus('syncing');
       try {
